@@ -17,12 +17,14 @@ public class Customer {
     
     private String gender;
     
-    private String location;
+    private String region;
     
-    public Customer(String name, String gender, String location){
+   
+    
+    public Customer(String name, String gender, String region){
         this.name= name;
         this.gender=gender;
-        this.location=location;
+        this.region=region;
     }
     
     public Customer() {
@@ -45,12 +47,12 @@ public class Customer {
         return this.gender;
     }
     
-    public void setLocation(String location) {
-        this.location = location;
+    public void setRegion(String region) {
+        this.region = region;
     }
     
-    public String getLocation() {
-        return this.location;
+    public String getRegion() {
+        return this.region;
     }
     
 }

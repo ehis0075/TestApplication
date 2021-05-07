@@ -18,16 +18,31 @@ public class CustomerService {
     
     public Customer addCustomer(Customer customer) {
         
-        Customer v = new Customer();
-        v.setName(customer.getName());
-        v.setGender(customer.getGender());
-        v.setLocation(customer.getLocation());
+        Customer newCustomer = new Customer();
+        newCustomer.setName(customer.getName());
+        newCustomer.setGender(customer.getGender());
+        newCustomer.setRegion(customer.getRegion());
         
-        return v;
+        return newCustomer;
         
     }
     
+    public int getCustomerCount() {
+        return 50;
+    }
     
+    public int getCustomerCountByRegion(String region ) {
+        
+        if(region.equalsIgnoreCase("west")) {
+            return 20;
+        } else if(region.equalsIgnoreCase("east")) {
+            return 30;
+        } else {
+            return 0;
+        }
+    }
+    
+     
     
     
     
