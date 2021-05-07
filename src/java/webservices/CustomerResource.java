@@ -9,13 +9,11 @@ import beans.CustomerService;
 import entity.Customer;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
@@ -53,9 +51,10 @@ public class CustomerResource {
         
         customerService.addCustomer(customer);
         
-        return "new customer successfully added";
+        return "new customer successfully added..........";
     }
 
+    @Path("getCount")
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String getHtml() {
@@ -63,16 +62,16 @@ public class CustomerResource {
     }
     
     @GET
-    @Path("byRegion")
+    @Path("{region}")
     @Produces(MediaType.TEXT_HTML)
-    public String getCustomerByRegionPath(@QueryParam("r") @DefaultValue("west") String region) {
+    public String getCustomerByRegionPath(@PathParam("region") String region) {
         return "<h3>Customer By Region: "+ customerService.getCustomerCountByRegion(region) +"</h3>";
     }
     
-    @GET
-    @Path("{r}")
-    @Produces(MediaType.TEXT_HTML)
-    public String getCustomerByRegion(@PathParam("r") String region) {
-        return "<h3>Customer By Region: "+ customerService.getCustomerCountByRegion(region) +"</h3>";
-    }
+//    @GET
+//    @Path("{region}")
+//    @Produces(MediaType.TEXT_HTML)
+//    public String getCustomerByRegion(@PathParam("region") String region) {
+//        return "<h3>Customer By Region: "+ customerService.getCustomerCountByRegion(region) +"</h3>";
+//    }
 }
